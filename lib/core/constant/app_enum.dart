@@ -1,0 +1,1 @@
+enum SSOType { google, apple }
