@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 part 'color.dart';
 part 'text.dart';
@@ -15,7 +16,7 @@ class AppTheme {
     scaffoldBackgroundColor: lightScheme.surface,
     cardColor: lightScheme.surfaceDim,
     appBarTheme: AppBarTheme(
-      color: lightScheme.surface,
+      backgroundColor: lightScheme.surface,
       surfaceTintColor: lightScheme.surface,
       systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
         systemNavigationBarColor: lightScheme.surface,
@@ -26,7 +27,7 @@ class AppTheme {
       elevation: 4,
       scrolledUnderElevation: 4,
     ),
-    bottomAppBarTheme: BottomAppBarTheme(
+    bottomAppBarTheme: BottomAppBarThemeData(
       color: lightScheme.surfaceDim,
       surfaceTintColor: lightScheme.surfaceDim,
     ),
@@ -61,7 +62,7 @@ class AppTheme {
     textTheme: darkTextTheme,
     scaffoldBackgroundColor: darkScheme.surface,
     appBarTheme: AppBarTheme(
-      color: darkScheme.surface,
+      backgroundColor: darkScheme.surface,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         systemNavigationBarColor: darkScheme.surfaceContainer,
         statusBarColor: darkScheme.surface,
@@ -71,7 +72,7 @@ class AppTheme {
       elevation: 4,
       scrolledUnderElevation: 4,
     ),
-    bottomAppBarTheme: BottomAppBarTheme(
+    bottomAppBarTheme: BottomAppBarThemeData(
       color: darkScheme.surfaceContainer,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

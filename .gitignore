@@ -43,3 +43,18 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# -----------------------
+# Firebase / Secrets
+# -----------------------
+# Safe to commit for Flutter:
+ google-services.json
+# google-services-info.plist (iOS)
+# Ignore admin SDK or sensitive files
+
+
+# -----------------------
+# Symbolication / Obfuscation
+# -----------------------
+app.*.symbols
+app.*.map.json

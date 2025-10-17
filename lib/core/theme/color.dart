@@ -2,13 +2,13 @@ part of 'theme.dart';
 
 ColorScheme darkScheme = ColorScheme(
   brightness: Brightness.dark,
-  primary: Color(0xFFFFD200),
-  onPrimary: Color(0xFF1F1D21),
-  primaryContainer: Color(0xFFFFD200),
+  primary: Color.fromRGBO(248, 248, 248, 1),
+  onPrimary: Color.fromRGBO(0, 0, 0, 0),
+  primaryContainer: Color.fromARGB(255, 255, 255, 255),
   onPrimaryContainer: Color(0xFFFFFFFF),
   primaryFixed: Color(0xFFFFFAE6),
-  primaryFixedDim: Color(0xFFFFE153),
-  onPrimaryFixed: Color(0xFF1F1D21),
+  primaryFixedDim: Color(0xFFFFFFFF),
+  onPrimaryFixed: Color.fromRGBO(0, 0, 0, 0),
   onPrimaryFixedVariant: Color(0xFFFFF3BF),
 
   ///SECONDARY
@@ -19,15 +19,15 @@ ColorScheme darkScheme = ColorScheme(
   secondaryFixed: Color(0xFFF24646),
   secondaryFixedDim: Color(0xFFB31919),
   onSecondaryFixed: Color(0xFFFFFFFF),
-  onSecondaryFixedVariant: Color(0xFF2F2F2F),
+  onSecondaryFixedVariant: Color.fromRGBO(0, 0, 0, 0),
 
   /// TERTIARY
-  tertiary: Color(0xFF2F2F2F),
+  tertiary: Color.fromRGBO(0, 0, 0, 0),
   onTertiary: Color(0xFF989898),
   tertiaryContainer: Color(0xFF989898),
   onTertiaryContainer: Color(0xFFE2E2E2),
-  tertiaryFixed: Color(0xFF444547),
-  tertiaryFixedDim: Color(0xFF2F2F2F),
+  tertiaryFixed: Color.fromRGBO(0, 0, 0, 0),
+  tertiaryFixedDim: Color.fromRGBO(0, 0, 0, 0),
   onTertiaryFixed: Color(0xFFFFFFFF),
   onTertiaryFixedVariant: Color(0xFFC0C0C0),
 
@@ -38,20 +38,20 @@ ColorScheme darkScheme = ColorScheme(
   onErrorContainer: Color(0xFFF2F2F2),
 
   /// SURFACE
-  surface: Color(0xFF1F1D21),
+  surface: Color.fromRGBO(0, 0, 0, 0),
   onSurface: Color(0xFFF0F0F0),
-  surfaceDim: Color(0xFF2B2C2D),
+  surfaceDim: Color.fromRGBO(0, 0, 0, 0),
   surfaceBright: Color(0xFF989898),
-  surfaceContainerLowest: Color(0xFF404040),
-  surfaceContainerLow: Color(0xFF2B2C2D),
-  surfaceContainer: Color(0xFF2F2F2F),
-  surfaceContainerHigh: Color(0xFF444547),
-  surfaceContainerHighest: Color(0xFF444547),
+  surfaceContainerLowest: Color.fromRGBO(0, 0, 0, 0),
+  surfaceContainerLow: Color.fromRGBO(0, 0, 0, 0),
+  surfaceContainer: Color.fromRGBO(0, 0, 0, 0),
+  surfaceContainerHigh: Color.fromRGBO(0, 0, 0, 0),
+  surfaceContainerHighest: Color.fromRGBO(0, 0, 0, 0),
 
   /// SURFACE VARIANT
   onSurfaceVariant: Color(0xFFC0C0C0),
   outline: Color(0xFFC0C0C0),
-  outlineVariant: Color(0xFF2F2F2F),
+  outlineVariant: Color.fromRGBO(0, 0, 0, 0),
 
   /// SHADOW
   shadow: Color(0x66000000),
@@ -62,17 +62,17 @@ ColorScheme darkScheme = ColorScheme(
   onInverseSurface: Color(0xFF1F1D21),
   inversePrimary: Color(0xFFFFD200),
 
-  surfaceTint: Color(0xFF2B2C2D),
+  surfaceTint: Color.fromRGBO(0, 0, 0, 0),
 );
 
 ColorScheme lightScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFFFFD200),
+  primary: Color.fromARGB(255, 255, 255, 255),
   onPrimary: Color(0xFF1F1D21),
-  primaryContainer: Color(0xFFFFD200),
+  primaryContainer: Color.fromARGB(255, 255, 255, 255),
   onPrimaryContainer: Color(0xFFFFFFFF),
   primaryFixed: Color(0xFFFFFAE6),
-  primaryFixedDim: Color(0xFFFFE153),
+  primaryFixedDim: Color(0xFFFFFFFF),
   onPrimaryFixed: Color(0xFF1F1D21),
   onPrimaryFixedVariant: Color(0xFFFFF3BF),
 
@@ -84,15 +84,15 @@ ColorScheme lightScheme = ColorScheme(
   secondaryFixed: Color(0xFFF24646),
   secondaryFixedDim: Color(0xFFB31919),
   onSecondaryFixed: Color(0xFFFFFFFF),
-  onSecondaryFixedVariant: Color(0xFF2F2F2F),
+  onSecondaryFixedVariant: Color.fromRGBO(0, 0, 0, 0),
 
   /// TERTIARY
   tertiary: Color(0xFFE2E2E2),
-  onTertiary: Color(0xFF7A7A7A),
-  tertiaryContainer: Color(0xFF444547),
+  onTertiary: Color.fromRGBO(0, 0, 0, 0),
+  tertiaryContainer: Color.fromRGBO(0, 0, 0, 0),
   onTertiaryContainer: Color(0xFFFFFFFF),
-  tertiaryFixed: Color(0xFF444547),
-  tertiaryFixedDim: Color(0xFF2F2F2F),
+  tertiaryFixed: Color.fromRGBO(0, 0, 0, 0),
+  tertiaryFixedDim: Color.fromRGBO(0, 0, 0, 0),
   onTertiaryFixed: Color(0xFFFFFFFF),
   onTertiaryFixedVariant: Color(0xFFC0C0C0),
 
@@ -104,7 +104,7 @@ ColorScheme lightScheme = ColorScheme(
 
   /// SURFACE
   surface: Color(0xFFF5F5F5),
-  onSurface: Color(0xFF1F1D21),
+  onSurface: Color.fromRGBO(0, 0, 0, 0),
   surfaceDim: Color(0xFFFFFFFF),
   surfaceBright: Color(0xFFF0F0F0),
   surfaceContainerLowest: Color(0xFFCACACA),
@@ -124,8 +124,8 @@ ColorScheme lightScheme = ColorScheme(
 
   /// INVERSE SURFACE
   inverseSurface: Color(0xFFFFFFFF),
-  onInverseSurface: Color(0xFF1F1D21),
-  inversePrimary: Color(0xFFFFD200),
+  onInverseSurface: Color.fromRGBO(0, 0, 0, 0),
+  inversePrimary: Color.fromARGB(255, 243, 243, 241),
 
-  surfaceTint: Color(0xFF2B2C2D),
+  surfaceTint: Color.fromRGBO(0, 0, 0, 0),
 );
