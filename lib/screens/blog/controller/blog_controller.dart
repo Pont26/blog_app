@@ -1,12 +1,21 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:template/core/services/blog_services.dart';
-import 'package:template/screens/auth/model/blog_model.dart';
+import 'package:template/core/constant/app_api_endpoint.dart';
+import 'package:template/core/services/network_services.dart';
+import 'package:template/screens/blog/model/blog_model.dart';
+
+
+class BlogBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put<BlogController>(BlogController());
+  }
+}
 
 class BlogController extends GetxController {
-  var blogs = <Blog>[].obs;     
-  var isLoading = true.obs;   
-  final BlogServices services = BlogServices();
+  var blogs = <Blog>[].obs;
+  var isLoading = true.obs;
 
   @override
   void onInit() {
@@ -14,19 +23,26 @@ class BlogController extends GetxController {
     fetchBlogs();
   }
 
-  void fetchBlogs() async {
+  /// ✅ Fetch blogs with user info
+  Future<void> fetchBlogs() async {
     try {
       isLoading(true);
-      List<Blog> fetchedBlogs = await services.getBlogs(); 
-      blogs.assignAll(fetchedBlogs);                   
+      final response = await NetworkService().getMethodCalling(
+        url: APIURLS().blogsWithUserURL(),
+      );
+      final List<dynamic> data = jsonDecode(response.body);
+      blogs.value = data.map((json) => Blog.fromJson(json)).toList();
     } catch (e) {
       Get.snackbar("Error", e.toString());
     } finally {
       isLoading(false);
     }
   }
- Future<void> deleteBlog(Blog blog) async {
+
+  /// ✅ Delete blog with confirmation dialog
+  Future<void> deleteBlog(Blog blog) async {
     final confirmed = await Get.defaultDialog<bool>(
+      backgroundColor: Colors.black,
       title: 'Delete Blog?',
       content: const Text('This action cannot be undone.'),
       barrierDismissible: false,
@@ -47,7 +63,9 @@ class BlogController extends GetxController {
 
     if (confirmed == true) {
       try {
-        await services.deleteBlog(blog.id!);
+        await NetworkService().deleteMethodCalling(
+          url: "${APIURLS().blogsURL()}(${blog.id})",
+        );
 
         blogs.removeWhere((b) => b.id == blog.id);
 

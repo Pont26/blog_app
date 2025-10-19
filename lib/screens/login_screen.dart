@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:template/core/constant/app_local_image.dart';
 import 'package:template/core/services/signInWithGoogle_Service.dart';
-import 'package:template/screens/auth/view/blog_screen.dart';
+import 'package:template/screens/blog/view/blog_screen.dart';
+
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -20,7 +23,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/login_img.png',
+                loginImg,
                 width: 150,
                 height: 150,
               ),
@@ -50,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                   User? user = await _authService.signInWithGoogle();
 
                   if (user != null) {
-                    Get.to(() => BlogScreen(user: user));
+                    Get.offAll(() => BlogScreen());
                   } else {
                     Get.snackbar("Error", "Google Sign-In failed");
                   }
@@ -71,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      "assets/images/google.png",
+                      google,
                       width: 32,
                       height: 32,
                       fit: BoxFit.cover,

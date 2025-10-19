@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:template/screens/auth/controller/create_blog_controller.dart';
-import 'package:template/screens/auth/view/widgets/appbar_widget.dart';
+import 'package:template/screens/create_blog/controller/create_blog_controller.dart';
+import 'package:template/screens/widgets/appbar_widget.dart';
 
 class CreateBlogScreen extends StatelessWidget {
    CreateBlogScreen({super.key});
-  final CreateBlogController _controller = Get.put(CreateBlogController());
+    final CreateBlogController _controller = Get.find<CreateBlogController>();
 
 
   @override

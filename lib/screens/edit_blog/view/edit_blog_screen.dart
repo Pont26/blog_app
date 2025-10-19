@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:template/screens/auth/controller/edit_blog_controller.dart';
-import 'package:template/screens/auth/model/blog_model.dart';
-import 'package:template/screens/auth/view/widgets/appbar_widget.dart';
+import 'package:template/screens/edit_blog/controller/edit_blog_controller.dart';
+import 'package:template/screens/blog/model/blog_model.dart';
+import 'package:template/screens/widgets/appbar_widget.dart';
 
 class EditBlogScreen extends StatelessWidget {
-   final Blog blog;
+  final Blog blog;
   late final EditBlogController _controller;
 
   EditBlogScreen({super.key, required this.blog}) {
-    _controller = Get.put(EditBlogController(originalBlog: blog));
+    _controller = Get.find<EditBlogController>();
   }
   
   @override

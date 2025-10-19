@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// Function that returns a Card widget
 Widget cardWidget({
   String? userProfile,
   required String? userName,
   required String title,
   required String blog,
   required String createdAt,
-    required VoidCallback onEdit,
+  required VoidCallback onEdit,
   required VoidCallback onDelete,
+  required String blogUserId, 
 }) {
-
+  final currentUserId = FirebaseAuth.instance.currentUser?.uid;
   bool isFavorited = false;
 
   return Card(
-    color: Color.fromRGBO(31, 29, 33, 1),
+    color: const Color.fromRGBO(31, 29, 33, 1),
     elevation: 0,
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: Colors.white, width: 1.0),
+      borderSide: const BorderSide(color: Colors.white, width: 1.0),
     ),
     child: Padding(
       padding: const EdgeInsets.all(16.0),
@@ -55,7 +56,7 @@ Widget cardWidget({
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             title,
             style: const TextStyle(
@@ -89,60 +90,64 @@ Widget cardWidget({
                   );
                 },
               ),
-              PopupMenuButton<String>(
-                color: Color.fromRGBO(31, 29, 33, 1),
-                icon: const Icon(Icons.more_horiz),
-                onSelected: (value) {
-                  if (value == 'edit') {
-                    onEdit();
-                  } else if (value == 'delete') {
-                    onDelete();
-                  }
-                },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                  PopupMenuItem<String>(
-                    value: 'edit',
-                    padding: EdgeInsets.zero,
-                    child: SizedBox(
-                      width: 150,
-                      height: 30,
-                      child: Row(
-                        children: const [
-                          SizedBox(width: 12),
-                          Icon(Icons.edit, size: 18),
-                          SizedBox(width: 8),
-                          Text(
-                            'Edit',
-                            style: TextStyle(
-                              fontSize: 12,
+              // Only show Edit/Delete if current user is the owner
+              if (currentUserId == blogUserId)
+                PopupMenuButton<String>(
+                  color: const Color.fromRGBO(31, 29, 33, 1),
+                  icon: const Icon(Icons.more_horiz),
+                  onSelected: (value) {
+                    if (value == 'edit') {
+                      onEdit();
+                    } else if (value == 'delete') {
+                      onDelete();
+                    }
+                  },
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    PopupMenuItem<String>(
+                      value: 'edit',
+                      padding: EdgeInsets.zero,
+                      child: SizedBox(
+                        width: 150,
+                        height: 30,
+                        child: Row(
+                          children: const [
+                            SizedBox(width: 12),
+                            Icon(Icons.edit, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              'Edit',
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  PopupMenuItem<String>(
-                    value: 'delete',
-                    padding: EdgeInsets.zero,
-                    child: SizedBox(
-                      width: 150,
-                      height: 30,
-                      child: Row(
-                        children: const [
-                          SizedBox(width: 12),
-                          Icon(Icons.delete, size: 18),
-                          SizedBox(width: 8),
-                          Text(
-                            'Delete',
-                            style: TextStyle(fontSize: 12, color: Colors.red),
-                          ),
-                        ],
+                    PopupMenuItem<String>(
+                      value: 'delete',
+                      padding: EdgeInsets.zero,
+                      child: SizedBox(
+                        width: 150,
+                        height: 30,
+                        child: Row(
+                          children: const [
+                            SizedBox(width: 12),
+                            Icon(Icons.delete, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              'Delete',
+                              style: TextStyle(
+                                  fontSize: 12, color: Colors.red),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-                offset: const Offset(0, 30), //  move the popup a bit lower
-              ),
+                  ],
+                  offset: const Offset(0, 30),
+                ),
             ],
           ),
         ],
